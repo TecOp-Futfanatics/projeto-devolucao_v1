@@ -30,5 +30,6 @@ $router = [
     "/relatorio" => fn () => load("RelatorioController", "index"),
   ],
   "POST" => [
+    "/relatorio" => fn () => load("RelatorioController", "store")
   ],
 ];
