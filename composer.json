@@ -1,0 +1,17 @@
+{
+  "name": "rodrigofroes/backed-mvc",
+  "autoload": {
+    "psr-4": {
+      "app\\": "app"
+    }
+  },
+  "authors": [
+    {
+      "name": "Rodrigo Froes",
+      "email": "digo_oliveira03@outlook.com.br"
+    }
+  ],
+  "require": {
+    "league/plates": "^3.4"
+  }
+}
