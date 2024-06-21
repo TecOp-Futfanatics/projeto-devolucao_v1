@@ -1,10 +1,11 @@
 <?php $this->layout("master"); ?>
+<script src="/js/relatorio-rnc.js"></script>
 <div>
     <h5>Relatório de não conformidade</h5>
     <hr>
 </div>
 
-<form action="" method="POST">
+<form action="/relatorio" method="POST" enctype="multipart/form-data">
     <div class="d-flex justify-content-around">
         <div>
             <div>
@@ -80,7 +81,7 @@
                 </div>
                 <div class="d-flex  align-items-center">
                     <input type="text" name="variacao" id="inputVariacao" class="form-control">
-                    <button class="btn btn-primary ml-2">+Variação</button>
+                    <button type="button" class="btn btn-primary ml-2">+Variação</button>
                 </div>
             </div>
 
@@ -92,7 +93,6 @@
                 <label for="inputQuantFaturado" class="form-label">Quantidade Faturado:</label>
                 <input type="text" name="quantFaturado" id="inputQuantFaturado" class="form-control">
             </div>
-
         </div>
         <div>
             <div>
@@ -128,4 +128,12 @@
             </div>
         </div>
     </div>
+    <div class="form-group mt-3 w-50">
+        <label for="inputImagem" class="form-label">Evidências Fotográficas:</label>
+        <input class="form-control" name="image[]" type="file" id="inputImagem"  multiple>
+    </div>
+    <div>
+        <div id="previaImagens"></div>
+    </div>
+    <button type="submit" class="btn btn-primary">Gerar</button>
 </form>
