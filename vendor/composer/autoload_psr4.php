@@ -7,5 +7,6 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'app\\' => array($baseDir . '/app'),
+    'Picqer\\Barcode\\' => array($vendorDir . '/picqer/php-barcode-generator/src'),
     'League\\Plates\\' => array($vendorDir . '/league/plates/src'),
 );

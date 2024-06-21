@@ -11,6 +11,10 @@ class ComposerStaticInit7ead9f3cb89c83ceeddb840ece220019
         array (
             'app\\' => 4,
         ),
+        'P' => 
+        array (
+            'Picqer\\Barcode\\' => 15,
+        ),
         'L' => 
         array (
             'League\\Plates\\' => 14,
@@ -21,6 +25,10 @@ class ComposerStaticInit7ead9f3cb89c83ceeddb840ece220019
         'app\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
+        ),
+        'Picqer\\Barcode\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/picqer/php-barcode-generator/src',
         ),
         'League\\Plates\\' => 
         array (
