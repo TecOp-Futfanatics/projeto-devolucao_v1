@@ -1,10 +1,13 @@
 <?php
 namespace app\controllers;
+use app\models\RelatorioOrigemModel;
 
 class RelatorioController
 {
   public function index()
   {
-    Controller::view("devolucao/relatorio-rnc");
+    $model = new RelatorioOrigemModel("", "");
+    $lista = $model->listarOrigem();
+    Controller::view("devolucao/relatorio-rnc", ['lista' => $lista]);
   }
 }
