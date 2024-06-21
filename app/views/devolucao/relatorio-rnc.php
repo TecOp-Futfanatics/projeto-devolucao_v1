@@ -1,10 +1,23 @@
-<?php $this->layout("master"); ?>
-<script src="/js/relatorio-rnc.js"></script>
-<div>
-    <h5>Relatório de não conformidade</h5>
-    <hr>
-</div>
+<?php $this->layout("master");
+$generator = new Picqer\Barcode\BarcodeGeneratorHTML();
 
+date_default_timezone_set("America/Sao_Paulo");
+$numRnc = date("dmYHis");
+?>
+<script src="/js/relatorio-rnc.js"></script>
+<div style="display: flex; justify-content: space-between;">
+    <div>
+        <h5>Relatório de não conformidade</h5>
+    </div>
+    <div style="height: 25px;">
+        <?php echo $generator->getBarcode(
+            $numRnc,
+            $generator::TYPE_CODE_128
+        ) ?>
+        <p style="font-size: 15px;"><?php echo $numRnc ?></p>
+    </div>
+</div>
+<hr>
 <form action="/relatorio" method="POST" enctype="multipart/form-data">
     <div class="d-flex justify-content-around">
         <div>
@@ -59,81 +72,86 @@
         <h5>Produto não conformes</h5>
         <hr>
     </div>
-    <div class="d-flex justify-content-around">
-        <div>
-            <div>
+    <div class="container">
+        <div class="row justify-content-around">
+            <div class="col-md-4">
                 <label for="inputNomeProduto" class="form-label">Nome Produto:</label>
                 <input type="text" name="nomeProduto" id="inputNomeProduto" class="form-control">
             </div>
-            <div>
-                <label for="inputCodRef" class="form-label">Código Referências:</label>
+            <div class="col-md-4">
+                <label for="inputCodRef" class="form-label">Código Referência:</label>
                 <input type="text" name="codigoRef" id="inputCodRef" class="form-control">
             </div>
-            <div>
+            <div class="col-md-4">
                 <label for="inputCodFut" class="form-label">Código FutFanatics:</label>
                 <input type="text" name="codigoFut" id="inputCodFut" class="form-control">
             </div>
         </div>
-        <div>
-            <div class="d-flex flex-column justify-content-start ">
-                <div class="mr-2">
-                    <label for="inputVariacao" class="form-label">Variação:</label>
-                </div>
-                <div class="d-flex  align-items-center">
-                    <input type="text" name="variacao" id="inputVariacao" class="form-control">
-                    <button type="button" class="btn btn-primary ml-2">+Variação</button>
-                </div>
-            </div>
-
-            <div>
-                <label for="inputQuantidade" class="form-label">Quantidade:</label>
-                <input type="text" name="quantidade" id="inputQuantidade" class="form-control">
-            </div>
-            <div>
-                <label for="inputQuantFaturado" class="form-label">Quantidade Faturado:</label>
-                <input type="text" name="quantFaturado" id="inputQuantFaturado" class="form-control">
-            </div>
-        </div>
-        <div>
-            <div>
-                <label for="inputValorUnit" class="form-label">Valor Unitario:</label>
+        <div class="row justify-content-around">
+            <div class="col-md-4">
+                <label for="inputValorUnit" class="form-label">Valor Unitário:</label>
                 <input type="text" name="valorUnit" id="inputValorUnit" class="form-control">
             </div>
-            <div>
+            <div class="col-md-4">
                 <label for="inputQuantTotal" class="form-label">Quantidade Total:</label>
                 <input type="text" name="quantTotal" id="inputQuantTotal" class="form-control">
             </div>
-            <div>
+            <div class="col-md-4">
                 <label for="inputCusto" class="form-label">Custo:</label>
                 <input type="text" name="custo" id="inputCusto" class="form-control">
             </div>
         </div>
-    </div>
-    <div class="d-flex align-items-center justify-content-center">
-        <div class="form-floating mt-4">
-            <label for="floatingTextarea">Detalhes da Não Conformidade:</label>
-            <textarea class="form-control" placeholder="Digite..." id="floatingTextarea" style="height: 100px; width: 500px;"></textarea>
+        <div class="row justify-content-around">
+            <div class="col-md-4">
+                <label for="inputVariacao" class="form-label">Variação:</label>
+                <div class="input-group">
+                    <input type="text" name="variacao" id="inputVariacao" class="form-control">
+                    <button type="button" id="btnVariacao" class="btn btn-primary ml-3">+ Variação</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="inputQuantidade" class="form-label">Quantidade:</label>
+                <input type="text" name="quantidade" id="inputQuantidade" class="form-control">
+            </div>
+            <div class="col-md-4">
+                <label for="inputQuantFaturado" class="form-label">Quantidade Faturado:</label>
+                <input type="text" name="quantFaturado" id="inputQuantFaturado" class="form-control">
+            </div>
         </div>
-        <div class="ml-5 gap-4 row mr-4 d-flex flex-column">
-            <label for="inputDestinacao">Destinação:</label>
-            <div class="d-flex">
-                <div class="form-check mr-4">
-                    <input type="radio" class="form-check-input" name="destinacao" id="fornecedor">
+        <div class="row justify-content-around" id="spaceButton"></div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-6">
+                <div class="form-floating">
+                    <label for="floatingTextarea">Detalhes da Não Conformidade:</label>
+                    <textarea class="form-control" placeholder="Digite..." id="floatingTextarea" style="height: 100px;"></textarea>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <label for="inputDestinacao">Destinação:</label>
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input" value="Fornecedor" name="destinacao" id="fornecedor">
                     <label class="form-check-label" for="fornecedor">Fornecedor</label>
                 </div>
                 <div class="form-check">
-                    <input type="radio" class="form-check-input" name="destinacao" id="descate">
-                    <label class="form-check-label" for="descate">Descate</label>
+                    <input type="checkbox" class="form-check-input" value="Descarte" name="destinacao" id="descarte">
+                    <label class="form-check-label" for="descarte">Descarte</label>
                 </div>
             </div>
         </div>
+        <div class="row mt-3">
+            <div class="col-md-6">
+                <label for="inputImagem" class="form-label">Evidências Fotográficas:</label>
+                <input class="form-control" name="image[]" type="file" id="inputImagem" multiple>
+            </div>
+            <div class="col-md-6">
+                <div id="previaImagens"></div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-primary">Gerar</button>
+            </div>
+        </div>
     </div>
-    <div class="form-group mt-3 w-50">
-        <label for="inputImagem" class="form-label">Evidências Fotográficas:</label>
-        <input class="form-control" name="image[]" type="file" id="inputImagem"  multiple>
-    </div>
-    <div>
-        <div id="previaImagens"></div>
-    </div>
-    <button type="submit" class="btn btn-primary">Gerar</button>
+
 </form>
