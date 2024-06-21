@@ -1,7 +1,6 @@
 <?php
 
 namespace app\controllers;
-
 use app\models\OrigemModel;
 
 class RelatorioController
@@ -15,6 +14,7 @@ class RelatorioController
 
   public function store($params)
   {
+    var_dump($params);
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       if (!empty($_FILES['image']['name'][0])) {
         foreach ($_FILES['image']['name'] as $key => $name) {
