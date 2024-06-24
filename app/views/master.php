@@ -70,6 +70,12 @@
                 RNC
               </p>
             </a>
+            <a href="/checklist-financeiro" class="nav-link">
+              <ion-icon name="cash" size="small" class="nav-icon fas"></ion-icon>
+              <p>
+                CHECKLIST FINANCEIRO
+              </p>
+            </a>
           </li>
         </ul>
       </nav>
@@ -126,5 +132,7 @@
 <script src="/js/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/js/adminlte.min.js"></script>
+<!-- Ion icons -->
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 </body>
 </html>

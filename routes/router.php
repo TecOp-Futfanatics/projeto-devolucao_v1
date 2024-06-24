@@ -28,8 +28,10 @@ $router = [
   "GET" => [
     "/" => fn () => load("HomeController", "index"),
     "/relatorio" => fn () => load("RelatorioController", "index"),
+    "/checklist-financeiro" => fn () => load("ChecklistFinanceiroController", "index"),
   ],
   "POST" => [
-    "/relatorio" => fn () => load("RelatorioController", "store")
+    "/relatorio" => fn () => load("RelatorioController", "store"),
+    "/checklist-financeiro" => fn () => load("ChecklistFinanceiroController","store"),
   ],
 ];
