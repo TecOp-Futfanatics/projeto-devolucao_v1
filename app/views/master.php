@@ -13,6 +13,10 @@
   <link rel="stylesheet" href="/css/adminlte.min.css">
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/img/iconTecOp.png">
+  <!-- JQuery -->
+  <script src="/js/jquery/jquery.min.js"></script>
+  <!-- JQuery Validation -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
