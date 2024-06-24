@@ -10,4 +10,13 @@ class RelatorioController
     $lista = $model->listarOrigem();
     Controller::view("devolucao/relatorio-rnc", ['lista' => $lista]);
   }
+
+  public function store($params)
+  {
+    echo json_encode($params);
+  }
+
+  public function stores($params){
+    echo json_encode($params);
+  }
 }
