@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="/css/adminlte.min.css">
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/img/iconTecOp.png">
+  <!-- JQuery -->
+  <script src="/js/jquery/jquery.min.js"></script>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -118,7 +120,7 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="/js/jquery/jquery.min.js"></script>
+
 <!-- jQuery UI 1.11.4 -->
 <!-- Bootstrap 4 -->
 <script src="/js/bootstrap/js/bootstrap.bundle.min.js"></script>
