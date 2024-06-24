@@ -16,7 +16,4 @@ class RelatorioController
     echo json_encode($params);
   }
 
-  public function stores($params){
-    echo json_encode($params);
-  }
 }
