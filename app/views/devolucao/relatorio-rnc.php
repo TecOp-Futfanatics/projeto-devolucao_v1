@@ -31,6 +31,7 @@ $numRnc = date("dmYHis");
 
 <form id="form" action="/relatorio" method="POST" novalidate>
     <div class="d-flex justify-content-around">
+        <input type="text" name="rnc" hidden value="<?php echo $numRnc ?>">
         <div>
             <div>
                 <label for="inputMarca" class="form-label">Marca:</label>
