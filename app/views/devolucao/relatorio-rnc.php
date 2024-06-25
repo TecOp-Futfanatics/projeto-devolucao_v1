@@ -18,21 +18,37 @@ $numRnc = date("dmYHis");
         <p style="font-size: 15px;"><?php echo $numRnc ?></p>
     </div>
 </div>
+<hr>
+<?php if (isset($error)) : ?>
+    <div id="alertMessage" class="alert alert-danger" role="alert">
+        <?php echo $error ?>
+    </div>
+<?php elseif (isset($success)) : ?>
+    <div id="alertMessage" class="alert alert-success" role="alert">
+        <?php echo $success ?>
+    </div>
+<?php endif ?>
 
-<form action="" method="POST">
+<form id="form" action="/relatorio" method="POST" novalidate>
     <div class="d-flex justify-content-around">
         <div>
             <div>
                 <label for="inputMarca" class="form-label">Marca:</label>
-                <input type="text" id="inputMarca" name="marca" class="form-control" required>
+                <select name="marca" class="form-control" id="inputMarca" required>
+                    <option selected value="0" disabled>Selecione uma opção</option>
+                    <?php foreach ($fornecedor as $forne) : ?>
+                        <option value="<?php echo $forne['for_marca'] ?>"><?php echo $forne['for_marca'] ?></option>
+                    <?php endforeach ?>
+                </select>
             </div>
             <div>
-                <label for="inputFornecedor" class="form-label">Fornecedor:</label>
-                <input type="text" id="inputFornecedor" name="fornecedor" class="form-control" required>
+                <label for="selectFornecedor" class="form-label">Fornecedor:</label>
+                <select name="fornecedor" id="selectFornecedor" class="form-control" required></select>
+                
             </div>
             <div>
                 <label for="inputCnpj" class="form-label">CNPJ:</label>
-                <input type="text" id="inputCnpj" name="cnpj" class="form-control" required>
+                <input type="text" id="inputCnpj" name="cnpj" class="form-control" disabled required>
             </div>
         </div>
         <div>
@@ -66,6 +82,14 @@ $numRnc = date("dmYHis");
                         <option value="<?php echo $origem['origem_id'] ?>"><?php echo $origem['origem_nome'] ?></option>
                     <?php endforeach ?>
                 </select>
+            </div>
+            <div id="divFornecedor">
+                <label for="inputPedidoTray" class="form-label">Pedido Tray:</label>
+                <input type="text" id="inputPedidoTray" name="pedidoTray" class="form-control" required>
+                <label for="inputNotaVenda" class="form-label">NF venda:</label>
+                <input type="text" id="inputNotaVenda" name="notaVenda" class="form-control" required>
+                <label for="inputDataNF" class="form-label">Data NF:</label>
+                <input type="date" id="inputDataNF" name="DatanF" class="form-control" required>
             </div>
         </div>
     </div>
@@ -107,7 +131,7 @@ $numRnc = date("dmYHis");
                 <label for="inputVariacao" class="form-label">Variação:</label>
                 <div class="input-group">
                     <input type="text" name="variacao[]" id="inputVariacao" class="form-control" required>
-                    <button type="button" id="btnVariacaoOpicional" class="btn btn-primary ml-3">+ Variação</button>
+                    <button type="button" id="btnVariacao" class="btn btn-primary ml-3">+ Variação</button>
                 </div>
             </div>
             <div class="col-md-4">
@@ -119,11 +143,12 @@ $numRnc = date("dmYHis");
                 <input type="text" name="quantFaturado[]" id="inputQuantFaturado" class="form-control" required>
             </div>
         </div>
+        <div id="spaceButton"></div>
         <div class="row mt-5">
             <div class="col-md-6">
                 <div class="form-floating">
                     <label for="floatingTextarea">Detalhes da Não Conformidade:</label>
-                    <textarea class="form-control" name="datalhes[]" placeholder="Digite..." id="floatingTextarea" style="height: 100px;" required></textarea>
+                    <textarea class="form-control" name="detalhes[]" placeholder="Digite..." id="floatingTextarea" style="height: 100px;" required></textarea>
                 </div>
             </div>
             <div class="col-md-6">
@@ -143,7 +168,7 @@ $numRnc = date("dmYHis");
                     <input class="form-control w-100" name="image[]" accept="image/png, image/jpg, image/jpeg" required type="file" id="inputImagemOpicional" multiple>
                 </div>
                 <div>
-                    <div id="previaImagensOpicional"></div>
+                    <div id="previaImagens"></div>
                 </div>
             </div>
         </div>
@@ -158,6 +183,4 @@ $numRnc = date("dmYHis");
             <button type="button" id="btnProduto" class="btn btn-primary">+ Produto</button>
         </div>
     </div>
-    <div id="messageContainer"></div>
-
 </form>
