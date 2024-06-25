@@ -29,9 +29,11 @@ $router = [
     "/" => fn () => load("HomeController", "index"),
     "/relatorio" => fn () => load("RelatorioController", "index"),
     "/checklist-financeiro" => fn () => load("ChecklistFinanceiroController", "index"),
+    "/produto-checklist-financeiro" => fn () => load("ProdutoChecklistFinanceiroController", "index")
   ],
   "POST" => [
     "/relatorio" => fn () => load("RelatorioController", "store"),
     "/checklist-financeiro" => fn () => load("ChecklistFinanceiroController","store"),
+    "/produto-checklist-financeiro" => fn () => load("ProdutoChecklistFinanceiroController", "store")
   ],
 ];

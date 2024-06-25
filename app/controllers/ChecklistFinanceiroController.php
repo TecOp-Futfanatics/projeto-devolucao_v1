@@ -4,6 +4,9 @@ namespace app\controllers;
 use app\models\ChecklistFinanceiroModel;
 use PDO;
 
+
+//CABECALHO
+
     class ChecklistFinanceiroController{
         public function index(){
             Controller::view("checklist-financeiro");
@@ -23,6 +26,7 @@ use PDO;
           $stmt->bindParam(':razaoSocial', $params->razaoSocial);
           $stmt->bindParam(':informacoesAdicionais', $params->informacoesAdicionais);
           $stmt->execute();
+          header("location:http://localhost:8000/checklist-financeiro");
         }
         
     }

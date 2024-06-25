@@ -1,6 +1,6 @@
 <?php
 namespace app\models\ChecklistFinanceiro;
-use function app\db\Conexao;
+//use function app\db\Conexao;
 
 class ChecklistFinanceiroModel{
     private $id;
