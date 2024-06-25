@@ -16,11 +16,10 @@
   <!-- JQuery -->
   <script src="/js/jquery/jquery.min.js"></script>
   <!-- JQuery Validation -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+  
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar bg-primary">
     <!-- Left navbar links -->
@@ -124,6 +123,7 @@
 <!-- jQuery -->
 <script src="/js/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="/js/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- AdminLTE App -->
