@@ -17,12 +17,17 @@ class RelatorioController
   }
 
   public function store($params)
-  {
-    var_dump($params);
+  { 
+    echo json_encode($params); 
     die();
+    $model = new RelatorioOrigemModel("", "");
+    $modelFornecedor = new FornecedorModel("", "", "", "");
+    $fornecedor = $modelFornecedor->listarFornecedor();
+    $lista = $model->listarOrigem();
+
     if (
       $params->marca == "" || $params->fornecedor == "" ||
-      $params->cnpj == "" || $params->or == "" ||
+      $params->or == "" ||
       $params->nf == "" || $params->emissao == "" ||
       $params->dataAvaria == "" || $params->QuantReprovado == "" ||
       $params->origem == "" || $params->nomeProduto == "" ||
@@ -33,10 +38,10 @@ class RelatorioController
       $params->image == ""
     ) {
       $error = "Preencha todos os campos";
-      Controller::view("devolucao/relatorio-rnc", ['error' => $error]);
+      Controller::view("devolucao/relatorio-rnc", ['error' => $error, 'lista' => $lista, 'fornecedor' => $fornecedor]);
     } else {
       $success = "Relatório cadastrado com sucesso"; 
-      Controller::view("devolucao/relatorio-rnc", ['success' => $success]);
+      Controller::view("devolucao/relatorio-rnc", ['success' => $success, 'lista' => $lista, 'fornecedor' => $fornecedor]);
     }
   }
 }
