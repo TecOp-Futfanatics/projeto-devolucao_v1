@@ -13,7 +13,7 @@ class ProdutoChecklistFinanceiroController{
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
           ]);
 
-          $stmt = $db->prepare("INSERT INTO produtoChecklistFinanceiro(codigoVariacao, numeroDaNotaFiscal, quantidadeFaturada, quantidadeDevolver, valorUnitario, ipi)");
+          $stmt = $db->prepare("INSERT INTO produtoChecklistFinanceiro(codigoVariacao, numeroDaNotaFiscal, quantidadeFaturada, quantidadeDevolver, valorUnitario, ipi) VALUES (:codigoVariacao, :numeroDaNotaFiscal, :quantidadeFaturada, :quantidadeDevolver, :valorUnitario)");
           $stmt->bindParam(":codigoVariacao", $params->codigoVariacao);
           $stmt->bindParam(":numeroDaNotaFiscal", $params->numeroDaNotaFiscal);
           $stmt->bindParam(":quantidadeFaturada", $params->quantidadeFaturada);
