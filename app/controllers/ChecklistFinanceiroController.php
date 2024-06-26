@@ -26,7 +26,7 @@ use PDO;
           $stmt->bindParam(':razaoSocial', $params->razaoSocial);
           $stmt->bindParam(':informacoesAdicionais', $params->informacoesAdicionais);
           $stmt->execute();
-          header("location:http://localhost:8000/checklist-financeiro");
+          header("location:http://localhost:8000/produto-checklist-financeiro");
         }
         
     }
