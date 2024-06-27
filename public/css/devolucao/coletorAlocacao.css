@@ -1,0 +1,18 @@
+.classHeader{
+    height: 50px;
+}
+
+#textLogin{
+    font-size: 20px;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 266px) {
+    body {
+        background-color: black;
+    }
+
+    .id {
+        background-color: blue;
+    }
+}
