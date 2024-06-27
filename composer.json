@@ -13,6 +13,8 @@
   ],
   "require": {
     "league/plates": "^3.4",
-    "picqer/php-barcode-generator": "^2.4"
+    "picqer/php-barcode-generator": "^2.4",
+    "firebase/php-jwt": "^6.10",
+    "vlucas/phpdotenv": "^5.6"
   }
 }
