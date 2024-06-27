@@ -1,6 +1,6 @@
 <?php
-namespace app\controllers;
-use app\models\FornecedorModel;
+namespace app\controllers\devolucao;
+use app\models\devolucao\FornecedorModel;
 
 class FornecedorController{
     public function store($params){

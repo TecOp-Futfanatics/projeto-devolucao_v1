@@ -1,5 +1,5 @@
 <?php
-namespace app\models;
+namespace app\models\devolucao;
 use app\db\Conexao;
 
 class FornecedorModel{

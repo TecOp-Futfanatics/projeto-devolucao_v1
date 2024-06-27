@@ -1,5 +1,5 @@
 <?php
-namespace app\models;
+namespace app\models\devolucao;
 use app\db\Conexao;
 
 class RelatorioModel{
@@ -10,6 +10,7 @@ class RelatorioModel{
     private $data_emissao;
     private $data_avaria;
     private $quantidade_reprovado;
+    private $origem_id;
     private $pedido_tray;
     private $nota_venda;
     private $data_nf;
@@ -17,7 +18,7 @@ class RelatorioModel{
     private $for_id;
     private $user_id;
 
-    public function __construct($id, $rnc, $or, $nota_fical, $data_emissao, $data_avaria, $quantidade_reprovado, $pedido_tray, $nota_venda, $data_nf, $pro_id, $for_id, $user_id)
+    public function __construct($id, $rnc, $or, $nota_fical, $data_emissao, $data_avaria, $quantidade_reprovado, $origem_id, $pedido_tray, $nota_venda, $data_nf, $pro_id, $for_id, $user_id)
     {
         $this->id = $id;
         $this->rnc = $rnc;
@@ -26,6 +27,7 @@ class RelatorioModel{
         $this->data_emissao = $data_emissao;
         $this->data_avaria = $data_avaria;
         $this->quantidade_reprovado = $quantidade_reprovado;
+        $this->origem_id = $origem_id;
         $this->pedido_tray = $pedido_tray;
         $this->nota_venda = $nota_venda;
         $this->data_nf = $data_nf;
@@ -90,6 +92,14 @@ class RelatorioModel{
         $this->quantidade_reprovado = $quantidade_reprovado;
     }
 
+    public function getOrigemId(){
+        return $this->origem_id;
+    }
+
+    public function setOrigemId($origem_id){
+        $this->origem_id = $origem_id;
+    }
+
     public function getPedidoTray(){
         return $this->pedido_tray;
     }
@@ -137,8 +147,28 @@ class RelatorioModel{
     public function setUserId($user_id){
         $this->user_id = $user_id;
     }
-
+    
     public function gravarRelatorio(){
+        $con = new Conexao();
+        $sql = "INSERT INTO tb_relatorio_nao_conformidade (rel_rnc, rel_or, rel_nota_fiscal, rel_data_emissao, rel_data_avaria, rel_quant_rep, rel_pedido_tray, rel_nota_venda, rel_data_nf, pro_id, for_id, user_id, origem_id)
+                VALUES(:rnc, :ordem_recebimento, :nota_fiscal, :data_emissao, :data_avaria, :quant_rep, :pedido_tray, :nota_venda, :data_nf, :pro_id, :for_id, :user_id ,:origem_id)";
+    
+        $stmt = $con->insert($sql, [ 
+            ':rnc' => $this->rnc,
+            ':ordem_recebimento' => $this->or,
+            ':nota_fiscal' => $this->nota_fical, 
+            ':data_emissao' => $this->data_emissao,
+            ':data_avaria' => $this->data_avaria,
+            ':quant_rep' => $this->quantidade_reprovado,
+            ':pedido_tray' => $this->pedido_tray,
+            ':nota_venda' => $this->nota_venda,
+            ':data_nf' => $this->data_nf,
+            ':pro_id' => $this->pro_id,
+            ':for_id' => $this->for_id,
+            ':user_id' => $this->user_id,
+            ':origem_id' => $this->origem_id
+        ]);
         
+        return $stmt;
     }
 }
