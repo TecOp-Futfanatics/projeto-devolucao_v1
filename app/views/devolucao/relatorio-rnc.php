@@ -90,7 +90,7 @@ $numRnc = date("dmYHis");
                 <label for="inputNotaVenda" class="form-label">NF venda:</label>
                 <input type="text" id="inputNotaVenda" name="notaVenda" class="form-control" required>
                 <label for="inputDataNF" class="form-label">Data NF:</label>
-                <input type="date" id="inputDataNF" name="DatanF" class="form-control" required>
+                <input type="date" id="inputDataNF" name="dataNF" class="form-control" required>
             </div>
         </div>
     </div>
