@@ -1,36 +1,38 @@
 <?php
 
-function load(string $controller, string $action)
+function load(string $path, string $controller, string $action)
 {
-    try {
-        // se controller existe
-        $controllerNamespace = "app\\controllers\\{$controller}";
+  try {
+    // Se controller existe no caminho especificado
+    $controllerNamespace = "app\\controllers\\{$path}\\{$controller}";
 
-        if (!class_exists($controllerNamespace)) {
-            throw new Exception("O controller {$controller} não existe");
-        }
-
-        $controllerInstance = new $controllerNamespace();
-
-        if (!method_exists($controllerInstance, $action)) {
-            throw new Exception(
-                "O método {$action} não existe no controller {$controller}"
-            );
-        }
-
-        $controllerInstance->$action((object) $_REQUEST);
-    } catch (Exception $e) {
-        echo $e->getMessage();
+    if (!class_exists($controllerNamespace)) {
+      throw new Exception("O controller {$controller} não existe no caminho {$path}");
     }
+
+    $controllerInstance = new $controllerNamespace();
+
+    if (!method_exists($controllerInstance, $action)) {
+      throw new Exception(
+        "O método {$action} não existe no controller {$controller}"
+      );
+    }
+
+    $controllerInstance->$action((object) $_REQUEST);
+  } catch (Exception $e) {
+    echo $e->getMessage();
+  }
 }
 
 $router = [
   "GET" => [
-    "/" => fn () => load("HomeController", "index"),
-    "/relatorio" => fn () => load("RelatorioController", "index"),
+    "/" => fn () => load("devolucao", "HomeDevolucaoController", "index"),
+    "/relatorio" => fn () => load("devolucao", "RelatorioController", "index"),
+    "/alocacao" => fn () => load("devolucao", "AlocacaoController", "index"),
   ],
   "POST" => [
-    "/relatorio" => fn () => load("RelatorioController", "store"),
-    "/fornecedor" => fn () => load("FornecedorController", "store"),
+    "/relatorio" => fn () => load("devolucao", "RelatorioController", "store"),
+    "/fornecedor" => fn () => load("devolucao", "FornecedorController", "store"),
+    "/loginAlocacao" => fn () => load("devolucao", "LoginAlocacaoController", "store"),
   ],
 ];
