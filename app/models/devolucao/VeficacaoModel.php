@@ -39,9 +39,10 @@ class VeficacaoModel{
 
     public function verificar(){
         $conexao = new Conexao();
-        $sql = "SELECT * FROM tb_usuario WHERE user_nome = :usuario";
+        $sql = "SELECT * FROM tb_usuario WHERE user_nome = :usuario AND user_senha = :senha";
         $stmt = $conexao->select($sql,[
             ":usuario" => $this->nome,
+            ":senha" => $this->senha
         ]);
         return $stmt;
     }

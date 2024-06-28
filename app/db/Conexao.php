@@ -1,8 +1,11 @@
-<?php 
+<?php
+
 namespace app\db;
+
 use PDO;
 
-class Conexao{
+class Conexao
+{
     private $db;
 
     function __construct()
@@ -11,31 +14,36 @@ class Conexao{
         $this->db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
-    function select($sql, $array=[]){
+    function select($sql, $array = [])
+    {
         $stmt = $this->db->prepare($sql);
         $stmt->execute($array);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
-    function insert($sql, $array=[]){
+    function insert($sql, $array = [])
+    {
         $stmt = $this->db->prepare($sql);
         $stmt->execute($array);
         return $this->db->lastInsertId();
     }
 
-    function update($sql, $array=[]){
+    function update($sql, $array = [])
+    {
         $stmt = $this->db->prepare($sql);
         $stmt->execute($array);
         return $stmt->rowCount();
     }
 
-    function delete($sql, $array=[]){
+    function delete($sql, $array = [])
+    {
         $stmt = $this->db->prepare($sql);
         $stmt->execute($array);
         return $stmt->rowCount();
     }
 
-    function lastInsertId(){
+    function lastInsertId()
+    {
         return $this->db->lastInsertId();
     }
 }

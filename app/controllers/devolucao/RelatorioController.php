@@ -21,13 +21,14 @@ class RelatorioController
 
   public function store($params)
   {
+
     $model = new RelatorioOrigemModel("", "");
     $modelFornecedor = new FornecedorModel("", "", "", "");
     $fornecedor = $modelFornecedor->listarFornecedor();
     $lista = $model->listarOrigem();
 
     if (
-      $params->marca == "" || $params->fornecedor == "" ||
+      $params->rnc == "" ||  $params->marca == "" || $params->fornecedor == "" ||
       $params->or == "" ||
       $params->nf == "" || $params->emissao == "" ||
       $params->dataAvaria == "" || $params->QuantReprovado == "" ||
@@ -43,25 +44,27 @@ class RelatorioController
     } else {
 
       $modelProduto = new ProdutoModel("", $params->nomeProduto, $params->codigoRef, $params->codigoFut, $params->variacao, $params->quantidade, $params->quantFaturado, $params->valorUnit, $params->quantTotal, $params->custo, $params->detalhes, $params->destinacao, "");
-      $idProduto = $modelProduto->ProdutoLastInsertId();
+      $idProdutos = $modelProduto->ProdutoLastInsertId();
 
-      $modelRelatorio = new RelatorioModel(
-        "", 
-        $params->rnc,
-        $params->or,
-        $params->nf,
-        $params->emissao, 
-        $params->dataAvaria, 
-        $params->QuantReprovado, 
-        $params->origem, 
-        $params->pedidoTray, 
-        $params->notaVenda,
-        $params->dataNF, 
-        $idProduto, 
-        $params->fornecedor,
-        1 // user_id
-      );
-      $modelRelatorio->gravarRelatorio();
+      foreach ($idProdutos as $idProduto) {
+        $modelRelatorio = new RelatorioModel(
+          "",
+          $params->rnc,
+          $params->or,
+          $params->nf,
+          $params->emissao,
+          $params->dataAvaria,
+          $params->QuantReprovado,
+          $params->origem,
+          $params->pedidoTray,
+          $params->notaVenda,
+          $params->dataNF,
+          $idProduto,
+          $params->fornecedor,
+          1 
+        );
+        $modelRelatorio->gravarRelatorio();
+      }
 
       if ($modelRelatorio) {
         $success = "Relatório cadastrado com sucesso";

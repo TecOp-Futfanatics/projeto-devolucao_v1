@@ -1,5 +1,6 @@
 .classHeader{
     height: 50px;
+    background-color: blue;
 }
 
 #textLogin{
@@ -11,7 +12,6 @@
     body {
         background-color: black;
     }
-
     .id {
         background-color: blue;
     }

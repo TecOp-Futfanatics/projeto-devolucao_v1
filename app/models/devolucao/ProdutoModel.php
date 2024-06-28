@@ -161,36 +161,48 @@ class ProdutoModel
         $endereco = new EnderecoModel("", "");
         $idEndereco = $endereco->EnderecolastInsertId();
 
-        $nome = is_array($this->nome) ? implode(",", $this->nome) : $this->nome;
-        $codigoRef = is_array($this->codigoRef) ? implode(",", $this->codigoRef) : $this->codigoRef;
-        $codigoFut = is_array($this->codigoFut) ? implode(",", $this->codigoFut) : $this->codigoFut;
-        $variacao = is_array($this->variacao) ? implode(",", $this->variacao) : $this->variacao;
-        $quantidade = is_array($this->quantidade) ? implode(",", $this->quantidade) : $this->quantidade;
-        $quantidadeFaturado = is_array($this->quantidadeFaturado) ? implode(",", $this->quantidadeFaturado) : $this->quantidadeFaturado;
-        $valorUnit = is_array($this->valorUnit) ? implode(",", $this->valorUnit) : $this->valorUnit;
-        $quantTotal = is_array($this->quantTotal) ? implode(",", $this->quantTotal) : $this->quantTotal;
-        $custo = is_array($this->custo) ? implode(",", $this->custo) : $this->custo;
-        $detalhes = is_array($this->detalhes) ? implode(",", $this->detalhes) : $this->detalhes;
-        $destinacao = is_array($this->destinacao) ? implode(",", $this->destinacao) : $this->destinacao;
 
 
+        $arraySize = count($this->nome);
+        if (
+            count($this->codigoRef) !== $arraySize ||
+            count($this->codigoFut) !== $arraySize ||
+            count($this->variacao) !== $arraySize ||
+            count($this->quantidade) !== $arraySize ||
+            count($this->quantidadeFaturado) !== $arraySize ||
+            count($this->valorUnit) !== $arraySize ||
+            count($this->quantTotal) !== $arraySize ||
+            count($this->custo) !== $arraySize ||
+            count($this->detalhes) !== $arraySize ||
+            count($this->destinacao) !== $arraySize
+        );
+
+        $conn = new Conexao(); 
         $sql = "INSERT INTO tb_produto_nao_conformidade (pro_nome, pro_cod_referencia, pro_cod_futfanatics, pro_variacao, pro_quantidade, pro_quant_fat, pro_valor_unitario, pro_quant_total, pro_custo, pro_detalhes, pro_destinacao, end_id) VALUES (:nome, :codigoRef, :codigoFut, :variacao, :quantidade, :quantidadeFaturado, :valorUnit, :quantTotal, :custo, :detalhes, :destinacao, :end_id)";
-        $conn = new Conexao();
 
-        $stmt = $conn->insert($sql, [
-            ':nome' => $nome,
-            ':codigoRef' => $codigoRef,
-            ':codigoFut' => $codigoFut,
-            ':variacao' => $variacao,
-            ':quantidade' => $quantidade,
-            ':quantidadeFaturado' => $quantidadeFaturado,
-            ':valorUnit' => $valorUnit,
-            ':quantTotal' => $quantTotal,
-            ':custo' => $custo,
-            ':detalhes' => $detalhes,
-            ':destinacao' => $destinacao,
-            ':end_id' => $idEndereco
-        ]);
-        return $stmt;
+        $lastInsertIds = [];
+
+
+        for ($i = 0; $i < $arraySize; $i++) {
+
+            $stmt = $conn->insert($sql, [
+                ':nome' => $this->nome[$i],
+                ':codigoRef' => $this->codigoRef[$i],
+                ':codigoFut' => $this->codigoFut[$i],
+                ':variacao' => $this->variacao[$i],
+                ':quantidade' => $this->quantidade[$i],
+                ':quantidadeFaturado' => $this->quantidadeFaturado[$i],
+                ':valorUnit' => $this->valorUnit[$i],
+                ':quantTotal' => $this->quantTotal[$i],
+                ':custo' => $this->custo[$i],
+                ':detalhes' => $this->detalhes[$i],
+                ':destinacao' => $this->destinacao[$i],
+                ':end_id' => $idEndereco
+            ]);
+
+            $lastInsertIds[] = $stmt;
+        }
+
+        return $lastInsertIds;
     }
 }
