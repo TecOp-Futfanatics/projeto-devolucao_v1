@@ -1,6 +1,7 @@
 <?php
 namespace app\models\ChecklistFinanceiro;
-//use function app\db\Conexao;
+use app\db\Conexao;
+use PDO;
 
 class ChecklistFinanceiroModel{
     private $id;
@@ -21,6 +22,8 @@ class ChecklistFinanceiroModel{
         $this->informacoesAdicionais = $informacoesAdicionais;
     }
 
+
+    //getters
     public function getId(){
         return $this->id;
     }
@@ -49,6 +52,8 @@ class ChecklistFinanceiroModel{
         return $this->informacoesAdicionais;
     }
 
+
+    //setters
     public function setId($id){
         $this->id = $id;
     }
@@ -76,4 +81,21 @@ class ChecklistFinanceiroModel{
     public function setInformacoesAdicionais($informacoesAdicionais){
         $this->informacoesAdicionais = $informacoesAdicionais;
     }
-}
+
+
+    //funções
+    public function store($params){
+        $db = new PDO('mysql:host=localhost;dbname=mydb', 'root', '', [
+            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
+          ]);
+        
+        $stmt = $db->prepare("INSERT INTO cabecalhoChecklistFinanceiro(formaDeAbatimento, motivoDaDevolucao, naturezaDaOperacao, cnpjDaTransportadora, razaoSocial, informacoesAdicionais) VALUES (:formaDeAbatimento, :motivoDaDevolucao, :naturezaDaOperacao, :cnpjDaTransportadora, :razaoSocial, :informacoesAdicionais)");
+        $stmt->bindParam(':formaDeAbatimento', $params->formaDeAbatimento);
+        $stmt->bindParam(':motivoDaDevolucao', $params->motivoDaDevolucao);
+        $stmt->bindParam(':naturezaDaOperacao', $params->naturezaDaOperacao);
+        $stmt->bindParam(':cnpjDaTransportadora', $params->cnpjDaTransportadora);
+        $stmt->bindParam(':razaoSocial', $params->razaoSocial);
+        $stmt->bindParam(':informacoesAdicionais', $params->informacoesAdicionais);
+        $stmt->execute();
+        header("location:http://localhost:8000/produto-checklist-financeiro");
+    }
