@@ -30,6 +30,7 @@ $router = [
     "/relatorio" => fn () => load("devolucao", "RelatorioController", "index"),
     "/alocacao" => fn () => load("devolucao", "AlocacaoController", "index"),
     "/alocacaoproduto" => fn () => load("devolucao", "AlocacaoController", "rnc"),
+    "/cabecalho-checklist-financeiro" => fn () => load("devolucao", "CabecalhoChecklistFinanceiroController", "index")
   ],
   "POST" => [
     "/relatorio" => fn () => load("devolucao", "RelatorioController", "store"),
