@@ -18,7 +18,6 @@
 </head>
 
 <body>
-
     <div class="header">
         <div>
             <a href="/alocacaoproduto">Voltar</a>
@@ -49,6 +48,7 @@
                 </tbody>
             </table>
         </div>
+        <a href="/verificacaoproduto?rnc=<?php echo $rnc[0]['rel_rnc']; ?>">Alocações</a>
     </div>
 </body>
 
