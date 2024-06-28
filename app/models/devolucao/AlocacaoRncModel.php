@@ -7,10 +7,12 @@ use app\db\Conexao;
 class AlocacaoRncModel
 {
     private $rnc;
+    private $codigo;
 
-    function __construct($rnc)
+    function __construct($rnc, $codigo)
     {
         $this->rnc = $rnc;
+        $this->codigo = $codigo;
     }
 
     public function getRnc()
@@ -21,6 +23,16 @@ class AlocacaoRncModel
     public function setRnc($rnc)
     {
         $this->rnc = $rnc;
+    }
+
+    public function getCodigo()
+    {
+        return $this->codigo;
+    }
+
+    public function setCodigo($codigo)
+    {
+        $this->codigo = $codigo;
     }
 
     public function buscarRnc()
@@ -37,6 +49,30 @@ class AlocacaoRncModel
                 INNER JOIN tb_origem ON tb_origem.origem_id = tb_relatorio_nao_conformidade.origem_id WHERE rel_rnc = :rnc";
         $stmt = $conexao->select($sql, [
             ":rnc" => $this->rnc
+        ]);
+        return $stmt;
+    }
+
+    public function CountProduto(){
+        $conexao = new Conexao();
+        $sql = "SELECT count(*) total FROM tb_relatorio_nao_conformidade  INNER JOIN tb_produto_nao_conformidade ON tb_produto_nao_conformidade.pro_id = tb_relatorio_nao_conformidade.pro_id
+                INNER JOIN tb_origem ON tb_origem.origem_id = tb_relatorio_nao_conformidade.origem_id
+                WHERE rel_rnc = :rnc";
+        $stmt = $conexao->select($sql, [
+            ":rnc" => $this->rnc,
+        ]);
+        return $stmt;
+    }
+
+    public function verificarCodigoProduto()
+    {
+        $conexao = new Conexao();
+        $sql = "SELECT rel_rnc, pro_nome, pro_cod_referencia, pro_cod_futfanatics, pro_variacao, pro_quantidade FROM  tb_relatorio_nao_conformidade 
+                INNER JOIN tb_produto_nao_conformidade ON tb_produto_nao_conformidade.pro_id = tb_relatorio_nao_conformidade.pro_id INNER JOIN 
+                tb_origem ON tb_origem.origem_id = tb_relatorio_nao_conformidade.origem_id WHERE rel_rnc = :rnc AND pro_cod_futfanatics = :codigo";
+        $stmt = $conexao->select($sql, [
+            ":rnc" => $this->rnc,
+            ":codigo" => $this->codigo
         ]);
         return $stmt;
     }
