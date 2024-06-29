@@ -4,42 +4,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <title>Login Alocação</title>
     <style>
         body {
-            max-width: 300px;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .containerInput {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        .container {
-            margin-top: 10%;
+        #rnc
+        {
+            width: 100%;
+            height: 30px;
         }
 
-        #form {
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        .button{
+            width: 100%;
+            display: flex;
+            justify-content: center;
         }
-
-        #inputRnc {
-            margin-bottom: 20px;
-        }
-
-        #inputRnc label {
-            font-weight: bold;
-        }
-
-        #inputRnc input {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-
-        button {
-            border: none;
-            border-radius: 5px;
-            padding: 10px;
+        #button{
+            width: 100px;
+            height: 40px;
             background-color: #007bff;
             color: white;
-            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+        }
+        .alert{
+            background-color: #f8d7da;
+            color: #721c24;
+            border-radius: 5px;
+            border: 1px solid #f5c6cb;
+        }
+        .msgAlerta{
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     </style>
 </head>
@@ -47,26 +60,29 @@
 <body>
     <div class="container">
         <?php if (isset($msg)) : ?>
-            <div style="background-color: red; padding: 0.3em; color: white">
-                <?= $msg ?>
+            <div class="alert">
+                <p class="msgAlerta"><?php echo $msg; ?></p>
             </div>
-        <?php endif ?>
+        <?php endif; ?>
         <form id="form" action="/alocacaoproduto" method="POST">
-            <div id="inputRnc" class="mb-3">
-                <label for="nome" class="form-label">RNC:</label>
-                <input type="text" class="form-control" id="nome" name="rnc">
+            <div class="containerInput">
+                <div class="inputRnc">
+                    <label for="rnc">rnc:</label>
+                    <input type="text" id="rnc" name="rnc" required>
+                </div>
+                <div class="button">
+                    <button id="button">Consultar</button>
+                </div>
             </div>
-            <button type="button" class="btn btn-primary w-100">Consultar</button>
         </form>
     </div>
+    <script>
+        $(document).ready(function() {
+            $('#form').submit(function(e) {
+                e.preventDefault();
+            });
+        });
+    </script>
 </body>
 
 </html>
-<script>
-    $('#nome').on('keypress', function(event) {
-        console.log(event.which);
-        if (event.which == 13) {
-            event.preventDefault();
-        }
-    });
-</script>

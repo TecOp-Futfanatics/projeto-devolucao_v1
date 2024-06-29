@@ -30,8 +30,22 @@ $numRnc = date("dmYHis");
 <?php endif ?>
 
 <form id="form" action="/relatorio" method="POST" novalidate>
-    <div class="d-flex justify-content-around">
+    <div class="container w-75 d-flex  justify-content-between">
         <input type="text" name="rnc" hidden value="<?php echo $numRnc ?>">
+        <div>
+            <div>
+                <label for="inputOR" class="form-label">OR:</label>
+                <input type="text" id="inputOR" name="or" class="form-control" required>
+            </div>
+            <div>
+                <label for="inputNF" class="form-label">NF:</label>
+                <input type="text" id="inputNF" name="nf" class="form-control" required>
+            </div>
+            <div>
+                <label for="inputEmissao" class="form-label">Emissão:</label>
+                <input type="date" id="inputEmissao" name="emissao" class="form-control" required>
+            </div>
+        </div>
         <div>
             <div>
                 <label for="inputMarca" class="form-label">Marca:</label>
@@ -50,20 +64,6 @@ $numRnc = date("dmYHis");
             <div>
                 <label for="inputCnpj" class="form-label">CNPJ:</label>
                 <input type="text" id="inputCnpj" name="cnpj" class="form-control" disabled required>
-            </div>
-        </div>
-        <div>
-            <div>
-                <label for="inputOR" class="form-label">OR:</label>
-                <input type="text" id="inputOR" name="or" class="form-control" required>
-            </div>
-            <div>
-                <label for="inputNF" class="form-label">NF:</label>
-                <input type="text" id="inputNF" name="nf" class="form-control" required>
-            </div>
-            <div>
-                <label for="inputEmissao" class="form-label">Emissão:</label>
-                <input type="date" id="inputEmissao" name="emissao" class="form-control" required>
             </div>
         </div>
         <div>

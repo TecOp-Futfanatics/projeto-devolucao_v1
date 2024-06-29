@@ -20,7 +20,7 @@ class AlocacaoController {
             ]);
         } else {
             Controller::view("devolucao/coletor/alocacaoProduto", [
-                "msg" => "RNC não encontrado"
+                "msg" => "RNC não encontrada "
             ]);
         }
     }
