@@ -15,7 +15,9 @@
   <link rel="icon" type="image/x-icon" href="/img/iconTecOp.png">
   <!-- JQuery -->
   <script src="/js/jquery/jquery.min.js"></script>
-  <!-- JQuery Validation -->
+  
+  <!--Bootstrap 5-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -126,6 +128,10 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
 <!-- Bootstrap 4 -->
 <script src="/js/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Bootstrap 5 -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 <!-- AdminLTE App -->
 <script src="/js/adminlte.min.js"></script>
 </body>

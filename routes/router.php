@@ -30,9 +30,11 @@ $router = [
     "/relatorio" => fn () => load("devolucao", "RelatorioController", "index"),
     "/alocacao" => fn () => load("devolucao", "AlocacaoController", "index"),
     "/alocacaoproduto" => fn () => load("devolucao", "AlocacaoController", "rnc"),
-    "/cabecalho-checklist-financeiro" => fn () => load("devolucao", "CabecalhoChecklistFinanceiroController", "index")
+    "/cabecalho-checklist-financeiro" => fn () => load("devolucao", "CabecalhoChecklistFinanceiroController", "index"),
+    "/plataforma" => fn () => load("devolucao", "PlataformaController", "index")
   ],
   "POST" => [
+    "plataforma" => fn () => load("devolucao", "PlataformaController", "store"),
     "/relatorio" => fn () => load("devolucao", "RelatorioController", "store"),
     "/fornecedor" => fn () => load("devolucao", "FornecedorController", "store"),
     "/loginAlocacao" => fn () => load("devolucao", "LoginAlocacaoController", "store"),
