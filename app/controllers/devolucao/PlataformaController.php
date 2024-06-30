@@ -4,8 +4,12 @@ use app\controllers\Controller;
 use app\models\devolucao\PlataformaModel;
 
 class PlataformaController{
-    public function index(){
-        return Controller::view("devolucao/plataforma");
+    public function index($params){
+        $plataformaModel = new PlataformaModel($params->id, $params->linkFornecedor, $params->nomeFornecedor, $params->usuarioPlataforma, $params->senhaPlataforma);
+
+        $plataformas = $plataformaModel->listarPlataforma();
+        return Controller::view("devolucao/plataforma", compact("plataformas"));
+        
     }
 
     public function store($params){

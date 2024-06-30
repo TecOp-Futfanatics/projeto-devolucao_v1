@@ -74,6 +74,13 @@ class PlataformaModel{
 
         $stmt = $conn->insert($sql, $valores);
         return $stmt;
+    }
 
+    public function listarPlataforma(){
+        $conn = new Conexao();
+        $sql = "SELECT * FROM tb_plataforma";
+
+        $stmt = $conn->select($sql, "");
+        return $stmt;
     }
 }
