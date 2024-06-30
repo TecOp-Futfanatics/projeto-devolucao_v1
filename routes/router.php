@@ -34,7 +34,7 @@ $router = [
     "/plataforma" => fn () => load("devolucao", "PlataformaController", "index")
   ],
   "POST" => [
-    "plataforma" => fn () => load("devolucao", "PlataformaController", "store"),
+    "/plataforma" => fn () => load("devolucao", "PlataformaController", "store"),
     "/relatorio" => fn () => load("devolucao", "RelatorioController", "store"),
     "/fornecedor" => fn () => load("devolucao", "FornecedorController", "store"),
     "/loginAlocacao" => fn () => load("devolucao", "LoginAlocacaoController", "store"),

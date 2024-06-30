@@ -68,8 +68,8 @@ class PlataformaModel{
         $valores = [
             ":linkFornecedor" => $this->linkFornecedor,
             ":nomeFornecedor" => $this->nomeFornecedor,
-            "usuarioPlataforma" => $this->usuarioPlataforma,
-            "senhaPlataforma" => $this->senhaPlataforma
+            ":usuarioPlataforma" => $this->usuarioPlataforma,
+            ":senhaPlataforma" => $this->senhaPlataforma
         ];
 
         $stmt = $conn->insert($sql, $valores);
