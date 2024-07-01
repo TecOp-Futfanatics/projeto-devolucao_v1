@@ -15,10 +15,10 @@ class LoginAlocacaoController
             $stmt = $verificacao->verificar();
             if($stmt){
                 Auth::session($stmt);
-                Controller::view('devolucao/coletor/alocacaoProduto');
+                Controller::view('devolucao/coletor/consultaRnc');
             }else{
                 $msg = "Usuário ou senha inválidos";
-                Controller::view('devolucao/coletor/coletorAlocacao', ['msg' => $msg]);
+                Controller::view('devolucao/coletor/loginColetor', ['msg' => $msg]);
             }
         }
     }
