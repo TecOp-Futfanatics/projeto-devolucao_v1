@@ -17,7 +17,6 @@
             justify-content: space-around;
         }
 
-
         table {
             width: 100%;
             border-collapse: collapse;
@@ -42,29 +41,29 @@
             font-weight: bold;
         }
 
-        .alocarBtn {
+        .button{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        #button{
             width: 100px;
             height: 40px;
             background-color: #007bff;
             color: white;
             border: none;
             border-radius: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            padding: 10px;
+            text-align: center;
             text-decoration: none;
         }
 
-        .btnAlocar {
-            display: flex;
-            justify-content: center;
-        }
-
         .table-container {
-            max-height: 300px;
-            /* Defina a altura máxima desejada */
+            max-height: 400px;
+            max-width: 100%;
             overflow-y: auto;
-            /* Adiciona overflow vertical */
+
         }
     </style>
 </head>
@@ -86,7 +85,7 @@
             <thead>
                 <tr>
                     <th>Produto</th>
-                    <th>Variacao</th>
+                    <th>Var.</th>
                     <th>Quant.</th>
                 </tr>
             </thead>
@@ -101,8 +100,8 @@
             </tbody>
         </table>
     </div>
-    <div class="btnAlocar">
-        <a class="alocarBtn" href="/alocacaoproduto">Alocar</a>
+    <div class="button">
+        <a id="button" href="/verificacaoCodigo?rnc=<?php echo $rnc[0]['rel_rnc']?>"  >Alocar</a>
     </div>
 </div>
 </body>
