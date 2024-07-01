@@ -9,7 +9,7 @@
 
 <!-- GATILHO DO MODAL -->
 <div class="d-flex flex-row mb-3">
-    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formulario">Cadastrar Plataforma</button>
+    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#form">Cadastrar Plataforma</button>
 </div>
 
 <div class="d-flex justify-content-center">
@@ -38,7 +38,7 @@
 </div>
 
 <!-- MODAL -->
-<div class="modal fade" id="formulario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="form" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">

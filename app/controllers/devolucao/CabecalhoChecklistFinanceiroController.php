@@ -7,4 +7,5 @@ class CabecalhoChecklistFinanceiroController{
     public function index(){
         Controller::view("devolucao/cabecalho-checklist-financeiro");
     }
+
 }
