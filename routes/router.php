@@ -30,11 +30,13 @@ $router = [
     "/relatorio" => fn () => load("devolucao", "RelatorioController", "index"),
     "/alocacao" => fn () => load("devolucao", "AlocacaoController", "index"),
     "/alocacaoproduto" => fn () => load("devolucao", "AlocacaoController", "rnc"),
+    "/verificacaoCodigo" => fn () => load("devolucao", "AlocacaoController", "verificacaoView"),
   ],
   "POST" => [
     "/relatorio" => fn () => load("devolucao", "RelatorioController", "store"),
     "/fornecedor" => fn () => load("devolucao", "FornecedorController", "store"),
     "/loginAlocacao" => fn () => load("devolucao", "LoginAlocacaoController", "store"),
     "/alocacaoproduto" => fn () => load("devolucao", "AlocacaoController", "store"),
+    "/verificacaoCodigo" => fn () => load("devolucao", "AlocacaoController", "verificacao")
   ],
 ];
