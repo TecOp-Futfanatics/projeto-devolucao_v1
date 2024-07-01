@@ -2,6 +2,7 @@
 
 namespace app\models\devolucao;
 use app\db\Conexao;
+use PDO;
 
 class PlataformaModel{
     private $id;
@@ -76,11 +77,15 @@ class PlataformaModel{
         return $stmt;
     }
 
-    public function listarPlataforma(){
-        $conn = new Conexao();
-        $sql = "SELECT * FROM tb_plataforma";
-
-        $stmt = $conn->select($sql, "");
-        return $stmt;
+    public function listarPlataforma() {
+        try {
+            $conn = new Conexao();
+            $sql = "SELECT * FROM tb_plataforma";
+            $result = $conn->select($sql);
+            return $result;
+        } catch (\PDOException $e) {
+            echo 'ERROR: ' . $e->getMessage();
+            return [];
+        }
     }
 }

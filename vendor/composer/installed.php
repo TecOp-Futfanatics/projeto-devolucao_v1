@@ -3,7 +3,7 @@
         'name' => 'rodrigofroes/backed-mvc',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '9fc36209f99ae94bc47025f183c3ac59ff31b1ef',
+        'reference' => 'e839bc0a161ff0d3f50ae61dfc590d8ceff62336',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -58,7 +58,7 @@
         'rodrigofroes/backed-mvc' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '9fc36209f99ae94bc47025f183c3ac59ff31b1ef',
+            'reference' => 'e839bc0a161ff0d3f50ae61dfc590d8ceff62336',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

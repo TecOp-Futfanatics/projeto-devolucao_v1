@@ -25,14 +25,16 @@
             </tr>
         </thead>
         <tbody>
+          <?php foreach ($plataformas as $plataforma): ?>
             <tr>
-               <td></td>
+               <td><?php echo $plataforma['id'] ?></td>
                <td><a href="<?php echo 'o link deve estar aqui'; ?>"></a></td>
-               <td></td>
+               <td><?php echo '' ?></td>
                <td></td>
                <td><ion-icon name="create" size="large"></ion-icon></td>
                <td><ion-icon name="trash" size="large"></ion-icon></td>
             </tr>
+          <?php endforeach ?>
         </tbody>
     </table>
 </div>
